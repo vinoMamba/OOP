@@ -1,6 +1,6 @@
 import {Cat, MachineCat} from "./animal/cat";
 import {Dog} from "./animal/dog";
-import {Operation} from "./calculator/calculator";
+import {OperationFactory} from "./calculator/calculator";
 
 const cat = new Cat("橙子");
 cat.shoutCount = 5;
@@ -13,9 +13,11 @@ const ding = new MachineCat("叮当");
 ding.shout();
 console.log(ding.changeSomething("我有口袋，我啥都能变"));
 console.log(ding);
-console.log('------------calculator---------------');
+console.log("------------calculator---------------");
 
+const operation = new OperationFactory();
 
-const operation = new Operation();
-const result = operation.getResult();
-console.log(result);
+const add = operation.createOperate("+");
+add.n1 = 10;
+add.n2 = 20;
+console.log(add.getResult());

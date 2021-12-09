@@ -1,6 +1,6 @@
 export type Operate = "+" | "-" | "*" | "/"
 
-export class Operation {
+class Operation {
     private _n1: number = 0;
     private _n2: number = 0;
 
@@ -20,22 +20,65 @@ export class Operation {
         this._n2 = value;
     }
 
-    getResult(): number {
-        return 0;
-    }
-
-    createOperate(operate: Operate) {
-        let xxx = null;
-        if (operate === '+') {
-            xxx = new OperationAdd();
-        }
-        return xxx;
+    getResult() {
     }
 }
-
 
 class OperationAdd extends Operation {
     getResult(): number {
         return this.n1 + this.n2;
     }
 }
+
+class OperationSub extends Operation {
+    getResult(): number {
+        return this.n1 - this.n2;
+    }
+}
+
+class OperationMult extends Operation {
+    getResult(): number {
+        return this.n1 * this.n2;
+    }
+}
+
+class OperationDiv extends Operation {
+    getResult(): number {
+        if (this.n2 === 0) {
+            throw new Error("The denominator can not be 0");
+        } else {
+            return this.n1 / this.n2;
+        }
+    }
+}
+
+
+export class OperationFactory {
+    createOperate(operateType: Operate) {
+        let operate: Operation | null;
+        switch (operateType) {
+            case "+":
+                operate = new OperationAdd();
+                break;
+            case "-":
+                operate = new OperationSub();
+                break;
+            case "*":
+                operate = new OperationMult();
+                break;
+            case "/":
+                operate = new OperationDiv();
+                break;
+        }
+        return operate;
+    }
+}
+
+
+
+
+
+
+
+
+
