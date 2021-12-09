@@ -54,7 +54,7 @@ class OperationDiv extends Operation {
 
 
 export class OperationFactory {
-    createOperate(operateType: Operate) {
+    createOperate(operateType: Operate): Operation {
         let operate: Operation | null;
         switch (operateType) {
             case "+":
