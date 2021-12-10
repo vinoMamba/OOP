@@ -2,6 +2,7 @@ import {Cat, MachineCat} from "./animal/cat";
 import {Dog} from "./animal/dog";
 import {OperationFactory} from "./calculator/calculator";
 import {CashContext} from "./shop/cashContext";
+import {SkillFactory, SpiderMan} from "./decoration/hero";
 
 const cat = new Cat("橙子");
 cat.shoutCount = 5;
@@ -25,10 +26,30 @@ console.log(add.getResult());
 
 console.log("-----------Cash--------------");
 
-const cash = new CashContext('normal');
+const cash = new CashContext("normal");
 const money = cash.getResult(100);
-console.log('normal', money);
+console.log("normal", money);
 
-const cashRebate = new CashContext('eightfold');
+const cashRebate = new CashContext("eightfold");
 const moneyRebate = cashRebate.getResult(100);
-console.log('rebate', moneyRebate);
+console.log("rebate", moneyRebate);
+
+console.log("-------decoration------");
+
+const spiderMan = new SpiderMan("vino");
+const skill = new SkillFactory();
+skill.createSkill("tusi", spiderMan);
+
+console.log(spiderMan);
+
+
+
+
+
+
+
+
+
+
+
+
