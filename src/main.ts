@@ -3,6 +3,7 @@ import {Dog} from "./animal/dog";
 import {OperationFactory} from "./calculator/calculator";
 import {CashContext} from "./shop/cashContext";
 import {SkillFactory, SpiderMan} from "./decoration/hero";
+import {SchoolGirl, ToolMan} from "./proxy/pursuit";
 
 const cat = new Cat("橙子");
 cat.shoutCount = 5;
@@ -41,6 +42,24 @@ const skill = new SkillFactory();
 skill.createSkill("tusi", spiderMan);
 
 console.log(spiderMan);
+
+console.log("------Proxy------");
+
+const mm = new SchoolGirl("宁次");
+const toolMan = new ToolMan(mm);
+toolMan.giveDolls();
+toolMan.giveChocolate();
+console.log(toolMan);
+
+
+
+
+
+
+
+
+
+
 
 
 
