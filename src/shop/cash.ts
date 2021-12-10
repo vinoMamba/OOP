@@ -1,37 +1,19 @@
-export abstract class CashSuper {
-    abstract acceptCash(money: number): number
-}
+import {Cash} from "./types";
 
-class CashNormal extends CashSuper {
+export class CashNormal implements Cash {
     acceptCash(money: number): number {
         return money;
     }
 }
 
-class CashRebate extends CashSuper {
+export class CashRebate implements Cash {
     moneyRebate: number = 1;
 
-    constructor(moneyRebate: number = 1) {
-        super();
+    constructor(moneyRebate: number = 0.8) {
         this.moneyRebate = moneyRebate;
     }
 
     acceptCash(money: number): number {
-
         return money * this.moneyRebate;
-    }
-}
-
-export class CashFactory {
-
-    createCashAccept(type: string) {
-
-        let cash: CashSuper;
-        if (type === "normal") {
-            cash = new CashNormal();
-        } else {
-            cash = new CashRebate(0.8);
-        }
-        return cash;
     }
 }

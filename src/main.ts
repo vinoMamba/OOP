@@ -1,7 +1,7 @@
 import {Cat, MachineCat} from "./animal/cat";
 import {Dog} from "./animal/dog";
 import {OperationFactory} from "./calculator/calculator";
-import {CashFactory} from "./shop/cash";
+import {CashContext} from "./shop/cashContext";
 
 const cat = new Cat("橙子");
 cat.shoutCount = 5;
@@ -25,9 +25,10 @@ console.log(add.getResult());
 
 console.log("-----------Cash--------------");
 
-const cash = new CashFactory();
+const cash = new CashContext('normal');
+const money = cash.getResult(100);
+console.log('normal', money);
 
-const cashNormal = cash.createCashAccept("normal");
-console.log(cashNormal.acceptCash(100));
-const cashRebate = cash.createCashAccept("");
-console.log(cashRebate.acceptCash(100));
+const cashRebate = new CashContext('eightfold');
+const moneyRebate = cashRebate.getResult(100);
+console.log('rebate', moneyRebate);
