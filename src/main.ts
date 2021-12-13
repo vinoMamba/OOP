@@ -6,6 +6,8 @@ import { SkillFactory, SpiderMan } from "./decoration/hero";
 import { SchoolGirl, ToolMan } from "./proxy/pursuit";
 import { FakeStarFactory } from "./factory";
 import { SingleDog } from "./single";
+import { Storage2 } from "./single/storage";
+import { Modal } from "./decoration/Modal";
 
 const cat = new Cat("橙子");
 cat.shoutCount = 5;
@@ -70,3 +72,21 @@ const d2 = new SingleDog().getInstance();
 console.log(d1);
 console.log(d2);
 console.log(d1 === d2);
+
+console.log("---storage---");
+
+const s1 = new Storage2().getInstance();
+const s2 = new Storage2().getInstance();
+s1.setItem2("item", "vino");
+s2.setItem2("item", "ckoko");
+
+const open = document.querySelector("#open")!;
+open.addEventListener("click", () => {
+  const modal = new Modal();
+  modal.open();
+});
+const close = document.querySelector("#close")!;
+close.addEventListener("click", () => {
+  const modal = new Modal();
+  modal.close();
+});
